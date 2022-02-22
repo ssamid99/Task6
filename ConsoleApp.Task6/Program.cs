@@ -222,10 +222,13 @@ namespace ConsoleApp.Task6
             //simvollarini yox et.
             string word = Monitor.ReadString("Input a text: ");
             string newText = "";
+            int q = word.IndexOf('a');
+            int r = word.LastIndexOf('a');
+
 
             for (int i = 0; i < word.Length; i++)
             {
-                if (i != 0 && i != word.Length - 1)
+                if (i != q && i != r)
                 {
                     if (word[i] != 'a')
                     {
@@ -239,6 +242,7 @@ namespace ConsoleApp.Task6
             }
 
             Console.WriteLine(newText);
+            
             
             // 13) Verilmish metnde butun simvollari ardicil sekilde
             // biri balaca, biri boyuk formada cap et.
@@ -289,9 +293,44 @@ namespace ConsoleApp.Task6
 
             Console.WriteLine(newWord);
             
-
-
-
+            //15)*Verilmish metinde ilk ve son simvol eynidirse,
+            //    ve metn daxilinde yanashi gelen { a}
+            //    simvolu varsa,
+            //    ve metn daxilinde { b}
+            //    simvolu yoxdursa
+            //    o zaman bu metnde butun { c}
+            //    simvollari yox et ve
+            //    neticede alinan metn zerkalni olub olmadigini yoxla.
+            string word = Monitor.ReadString("Metn daxil edin: ");
+            string m = " ";
+            //string s = " ";
+            //int n = Convert.ToInt32(s);
+            for(int i = 0; i < word.Length; i++)
+            {
+                bool e = (word[0] == word[word.Length - 1]) && word[i] != 'b';
+                if (e)
+                {
+                    word = word.Replace("c", String.Empty);
+                }
+                else
+                {
+                    Console.WriteLine("Verilenler shertlere uygun deyil");
+                    break;
+                }
+            }
+            Console.WriteLine(word);
+            for(int i = word.Length - 1; i >= 0; i--)
+            {
+                m += word[i];
+            }
+            if(m == word)
+            {
+                Console.WriteLine("Shert odenilir");
+            }
+            else
+            {
+                Console.WriteLine("Shertler odenilmir");
+            }
 
 
 
